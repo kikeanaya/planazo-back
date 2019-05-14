@@ -30,7 +30,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express()
 
-const whiteList = ["https://kikeanaya.github.io/planazo-front/"]
+const whiteList = ["https://kikeanaya.github.io"]
 
 const corsOptions = {
   credentials: true,
