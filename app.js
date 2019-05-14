@@ -30,7 +30,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express()
 
-const whiteList = ["http://localhost:5000"]
+const whiteList = ["https://kikeanaya.github.io/planazo-front/"]
 
 const corsOptions = {
   credentials: true,
@@ -46,17 +46,6 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
-
-app.use(require('node-sass-middleware')({
-  src:  path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  sourceMap: true
-}))    
-
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'hbs')
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
 hbs.registerHelper('ifUndefined', (value, options) => {
   if (arguments.length < 2)
@@ -92,10 +81,5 @@ app.use('/api', authRoutes)
 
 const planRoutes = require('./routes/plan-routes')
 app.use('/api', planRoutes)
-      
-app.use((req, res, next) => {
-  // If no routes match, send them the React HTML.
-   res.sendFile(__dirname + "/public/index.html");
-})
 
 module.exports = app  
