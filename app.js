@@ -30,7 +30,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express()
 
-const whiteList = ["https://kikeanaya.github.io"]
+const whiteList = ["https://kikeanaya.github.io","http://localhost:3000/"]
 
 const corsOptions = {
   credentials: true,
